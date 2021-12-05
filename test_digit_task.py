@@ -13,63 +13,63 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-# def test_condo():
-#     driver = webdriver.Chrome()
-#     driver.get('https://condos.ca/')
-#     driver.maximize_window()
-#     time.sleep(2)
-#
-#     driver.find_element(By.XPATH, "//div[@class='styles___AreaLabel-sc-1nhiula-4 GgENq']").click()
-#     time.sleep(1)
-#     driver.find_element(By.XPATH, "//input[contains(@class, 'react-autosuggest')]").send_keys('Toronto')
-#     driver.find_element(By.XPATH, "//div[text()='Toronto' and contains(@class, 'hvYQvK')]").click()
-#     time.sleep(3)
-#     price_elements = driver.find_elements(By.XPATH, "//div[contains(@class, 'dHPUdq')]")
-#     price_list = []
-#
-#     for element in price_elements:
-#         temp = element.text
-#         value = Decimal(sub(r'[^\d.]', '', temp))
-#         price_list.append(value)
-#     price_list.sort(reverse=True)
-#
-#     print("Printing the price in descending order")
-#     for i in range(len(price_list)):
-#         print(price_list[i])
-#
-#     # Clicking on fifth element as asked. index starts from 1 so used 5.
-#     driver.find_element(By.XPATH, "(//address[contains(@class, 'gTwVlm')])[5]").click()
-#     driver.switch_to.window(driver.window_handles[1])
-#     wait = WebDriverWait(driver, 10)
-#
-#     wait.until(EC.presence_of_element_located((By.XPATH, "//h1[contains(@class, 'ccBSix')]")))
-#     time.sleep(2)
-#     json_file_name = driver.find_element(By.XPATH, "//h1[contains(@class, 'ccBSix')]").text
-#     json_file_name = json_file_name + '.json'
-#     print("JSON File to be used is: " + json_file_name)
-#     element = driver.find_element(By.XPATH, "//div[contains(@class, 'heNzJh')]")
-#     driver.execute_script("arguments[0].scrollIntoView();", driver.find_element(By.XPATH, "//div[text()='Rooms']"))
-#     print('scroll done')
-#     time.sleep(1)
-#     element.click()
-#
-#     no_of_rows = len(
-#         driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr"))
-#
-#     name = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[1]")
-#     size = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[2]")
-#     feature = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[3]")
-#     property_details = {'rooms': []}
-#
-#     for i in range(no_of_rows):
-#         property_details['rooms'].append({
-#             'name': name[i].text,
-#             'size': size[i].text,
-#             'feature': feature[i].text
-#         })
-#
-#     with open(json_file_name, 'w') as outfile:
-#         json.dump(property_details, outfile)
+def test_condo():
+    driver = webdriver.Chrome()
+    driver.get('https://condos.ca/')
+    driver.maximize_window()
+    time.sleep(2)
+
+    driver.find_element(By.XPATH, "//div[@class='styles___AreaLabel-sc-1nhiula-4 GgENq']").click()
+    time.sleep(1)
+    driver.find_element(By.XPATH, "//input[contains(@class, 'react-autosuggest')]").send_keys('Toronto')
+    driver.find_element(By.XPATH, "//div[text()='Toronto' and contains(@class, 'hvYQvK')]").click()
+    time.sleep(3)
+    price_elements = driver.find_elements(By.XPATH, "//div[contains(@class, 'dHPUdq')]")
+    price_list = []
+
+    for element in price_elements:
+        temp = element.text
+        value = Decimal(sub(r'[^\d.]', '', temp))
+        price_list.append(value)
+    price_list.sort(reverse=True)
+
+    print("Printing the price in descending order")
+    for i in range(len(price_list)):
+        print(price_list[i])
+
+    # Clicking on fifth element as asked. index starts from 1 so used 5.
+    driver.find_element(By.XPATH, "(//address[contains(@class, 'gTwVlm')])[5]").click()
+    driver.switch_to.window(driver.window_handles[1])
+    wait = WebDriverWait(driver, 10)
+
+    wait.until(EC.presence_of_element_located((By.XPATH, "//h1[contains(@class, 'ccBSix')]")))
+    time.sleep(2)
+    json_file_name = driver.find_element(By.XPATH, "//h1[contains(@class, 'ccBSix')]").text
+    json_file_name = json_file_name + '.json'
+    print("JSON File to be used is: " + json_file_name)
+    element = driver.find_element(By.XPATH, "//div[contains(@class, 'heNzJh')]")
+    driver.execute_script("arguments[0].scrollIntoView();", driver.find_element(By.XPATH, "//div[text()='Rooms']"))
+    print('scroll done')
+    time.sleep(1)
+    element.click()
+
+    no_of_rows = len(
+        driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr"))
+
+    name = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[1]")
+    size = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[2]")
+    feature = driver.find_elements(By.XPATH, "//table[@class='styles___RoomsTable-sc-tgjfhg-1 efdrQR']/tbody/tr/td[3]")
+    property_details = {'rooms': []}
+
+    for i in range(no_of_rows):
+        property_details['rooms'].append({
+            'name': name[i].text,
+            'size': size[i].text,
+            'feature': feature[i].text
+        })
+
+    with open(json_file_name, 'w') as outfile:
+        json.dump(property_details, outfile)
 
 
 def test_steam_powered():
